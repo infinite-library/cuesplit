@@ -25,7 +25,7 @@ YEAR=`cat "$CUE_FILE" | grep "REM DATE" | sed -e 's/REM DATE //g'`
 echo "Renaming files"
 for FILE in `find -type f -name 'splited*.flac'`
 do
-	TITLE=`metaflac --show-tag=TITLE "$FILE" | sed -e s/TITLE=//g`
+	TITLE=`metaflac --show-tag=TITLE "$FILE" | sed -e s/TITLE=//g | sed -e "s/\//\-/g"`
 	TRACKNUMBER=`metaflac --show-tag=TRACKNUMBER "$FILE" | sed s/TRACKNUMBER=//g`
 	# Fix number
 	TRACKNUMBER=`printf %02.f $TRACKNUMBER`
